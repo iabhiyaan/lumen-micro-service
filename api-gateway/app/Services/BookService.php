@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use ConsumersExternalService;
+use App\Traits\ConsumersExternalService;
 
 class BookService
 {
@@ -16,4 +16,29 @@ class BookService
         $this->baseUri = config('services.books.base_uri');
     }
 
+    public function obtainBooks()
+    {
+        return $this->performRequest('GET', 'books');
+    }
+
+    public function createBook($data)
+    {
+        return $this->performRequest('POST', 'books', $data);
+    }
+
+    public function obtainBook($authorId)
+    {
+        return $this->performRequest('GET', 'books/' . $authorId);
+    }
+
+
+    public function updateBook($data, $authorId)
+    {
+        return $this->performRequest('PUT', 'books/' . $authorId, $data);
+    }
+
+    public function deleteBook($authorId)
+    {
+        return $this->performRequest('DELETE', 'books/' . $authorId);
+    }
 }
