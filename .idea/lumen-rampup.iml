@@ -113,6 +113,8 @@
       <excludeFolder url="file://$MODULE_DIR$/books-microservice/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/books-microservice/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/books-microservice/vendor/_laravel_idea" />
+      <excludeFolder url="file://$MODULE_DIR$/books-microservice/storage/app" />
+      <excludeFolder url="file://$MODULE_DIR$/books-microservice/storage/framework" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
