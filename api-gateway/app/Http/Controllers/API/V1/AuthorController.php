@@ -25,29 +25,29 @@ class AuthorController extends Controller
 
     public function index()
     {
-        return $this->successReponse($this->authorService->obtainAuthors());
+        return $this->successResponse($this->authorService->obtainAuthors());
     }
 
     public function store(Request $request)
     {
 
-        return $this->successReponse($this->authorService->createAuthor($request->all(), Response::HTTP_CREATED));
+        return $this->successResponse($this->authorService->createAuthor($request->all(), Response::HTTP_CREATED));
 
     }
 
     public function show($author)
     {
-        return $this->successReponse($this->authorService->obtainAuthor($author));
+        return $this->successResponse($this->authorService->obtainAuthor($author));
     }
 
     public function update(Request $request, $author)
     {
-        return $this->successReponse($this->authorService->updateAuthor($request->all(), $author));
+        return $this->successResponse($this->authorService->updateAuthor($request->all(), $author));
     }
 
 
     public function destroy(Request $request, $author)
     {
-        return $this->successReponse($this->authorService->deleteAuthor($author));
+        return $this->successResponse($this->authorService->deleteAuthor($author));
     }
 }

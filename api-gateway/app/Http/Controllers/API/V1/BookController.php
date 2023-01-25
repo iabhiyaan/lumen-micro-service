@@ -25,30 +25,30 @@ class BookController extends Controller
 
     public function index()
     {
-        return $this->successReponse($this->bookService->obtainBooks());
+        return $this->successResponse($this->bookService->obtainBooks());
     }
 
     public function store(Request $request)
     {
         $this->authorService->obtainAuthor($request->get('author_id'));
 
-        return $this->successReponse($this->bookService->createBook($request->all(), Response::HTTP_CREATED));
+        return $this->successResponse($this->bookService->createBook($request->all(), Response::HTTP_CREATED));
 
     }
 
     public function show($book)
     {
-        return $this->successReponse($this->bookService->obtainBook($book));
+        return $this->successResponse($this->bookService->obtainBook($book));
     }
 
     public function update(Request $request, $book)
     {
-        return $this->successReponse($this->bookService->updateBook($request->all(), $book));
+        return $this->successResponse($this->bookService->updateBook($request->all(), $book));
     }
 
 
     public function destroy(Request $request, $book)
     {
-        return $this->successReponse($this->bookService->deleteBook($book));
+        return $this->successResponse($this->bookService->deleteBook($book));
     }
 }

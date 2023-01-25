@@ -26,7 +26,7 @@ class AuthorController extends Controller
     {
         $authors = Author::all();
 
-        return $this->successReponse($authors);
+        return $this->successResponse($authors);
     }
 
     public function store(Request $request)
@@ -40,14 +40,14 @@ class AuthorController extends Controller
         $this->validate($request, $rules);
 
         $author = Author::create($request->all());
-        return $this->successReponse($author, Response::HTTP_CREATED);
+        return $this->successResponse($author, Response::HTTP_CREATED);
     }
 
     public function show($author)
     {
         $author = Author::findOrFail($author);
 
-        return $this->successReponse($author);
+        return $this->successResponse($author);
 
     }
 
@@ -66,12 +66,12 @@ class AuthorController extends Controller
         $author->fill($request->all());
 
         if ($author->isClean()) {
-            return $this->errorReponse('At least one value must change', Response::HTTP_UNPROCESSABLE_ENTITY);
+            return $this->errorResponse('At least one value must change', Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         $author->save();
 
-        return $this->successReponse($author);
+        return $this->successResponse($author);
     }
 
 
@@ -80,6 +80,6 @@ class AuthorController extends Controller
         $author = Author::findOrFail($author);
         $author->delete();
 
-        return $this->successReponse($author);
+        return $this->successResponse($author);
     }
 }

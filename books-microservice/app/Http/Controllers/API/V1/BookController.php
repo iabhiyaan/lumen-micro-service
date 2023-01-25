@@ -26,7 +26,7 @@ class BookController extends Controller
     {
         $books = Book::all();
 
-        return $this->successReponse($books);
+        return $this->successResponse($books);
     }
 
     public function store(Request $request)
@@ -41,14 +41,14 @@ class BookController extends Controller
         $this->validate($request, $rules);
 
         $book = Book::create($request->all());
-        return $this->successReponse($book, Response::HTTP_CREATED);
+        return $this->successResponse($book, Response::HTTP_CREATED);
     }
 
     public function show($book)
     {
         $book = Book::findOrFail($book);
 
-        return $this->successReponse($book);
+        return $this->successResponse($book);
     }
 
     public function update(Request $request, $book)
@@ -67,12 +67,12 @@ class BookController extends Controller
         $book->fill($request->all());
 
         if ($book->isClean()) {
-            return $this->errorReponse('At least one value must change', Response::HTTP_UNPROCESSABLE_ENTITY);
+            return $this->errorResponse('At least one value must change', Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         $book->save();
 
-        return $this->successReponse($book);
+        return $this->successResponse($book);
     }
 
 
@@ -81,6 +81,6 @@ class BookController extends Controller
         $book = Book::findOrFail($book);
         $book->delete();
 
-        return $this->successReponse($book);
+        return $this->successResponse($book);
     }
 }

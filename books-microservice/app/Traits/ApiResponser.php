@@ -13,7 +13,7 @@ trait ApiResponser
      * @param int $code
      * @return Illuminate\Http\JsonResponse
      * */
-    public function successReponse($data, $code = Response::HTTP_OK): JsonResponse
+    public function successResponse($data, $code = Response::HTTP_OK): JsonResponse
     {
         return response()->json(['data' => $data], $code);
     }
@@ -24,7 +24,7 @@ trait ApiResponser
     * @param int $code
     * @return Illuminate\Http\JsonResponse
     * */
-    public function errorReponse($message, $code): JsonResponse
+    public function errorResponse($message, $code): JsonResponse
     {
         return response()->json(['message' => $message, 'code' => $code], $code);
     }

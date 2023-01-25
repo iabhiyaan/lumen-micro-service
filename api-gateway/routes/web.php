@@ -13,6 +13,11 @@
 |
 */
 
+
+$router->group(['prefix' => 'api/v1', 'middleware' => ['auth:api'], 'namespace' => 'API\V1'], function () use ($router) {
+    $router->get('/users/me', 'UserController@me');
+});
+
 $router->group(['prefix' => 'api/v1', 'middleware' => ['client.credentials'], 'namespace' => 'API\V1'], function () use ($router) {
     $router->group(['prefix' => 'books',], function () use ($router) {
         $router->get('/', 'BookController@index');
@@ -30,5 +35,14 @@ $router->group(['prefix' => 'api/v1', 'middleware' => ['client.credentials'], 'n
         $router->put('/{author}', 'AuthorController@update');
         $router->patch('/{author}', 'AuthorController@update');
         $router->delete('/{author}', 'AuthorController@destroy');
+    });
+
+    $router->group(['prefix' => 'users',], function () use ($router) {
+        $router->get('/', 'UserController@index');
+        $router->post('/', 'UserController@store');
+        $router->get('/{user}', 'UserController@show');
+        $router->put('/{user}', 'UserController@update');
+        $router->patch('/{user}', 'UserController@update');
+        $router->delete('/{user}', 'UserController@destroy');
     });
 });
