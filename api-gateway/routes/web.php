@@ -13,7 +13,7 @@
 |
 */
 
-$router->group(['prefix' => 'api/v1', 'namespace' => 'API\V1'], function () use ($router) {
+$router->group(['prefix' => 'api/v1', 'middleware' => ['client.credentials'], 'namespace' => 'API\V1'], function () use ($router) {
     $router->group(['prefix' => 'books',], function () use ($router) {
         $router->get('/', 'BookController@index');
         $router->post('/', 'BookController@store');
